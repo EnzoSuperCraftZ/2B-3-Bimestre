@@ -7,10 +7,16 @@ reviews = []
 def registrar_usuario():
     tipo = input("Tipo de usuário:\n\n1 - Aluno\n2 - Visitante\n3 - Chefe De Departamento\nEscolha o seu tipo de usuário: ").strip().upper()
     print("\nRegistrar informações\n")
-    nome = input("Digite seu nome completo: ").strip()
-    cpf = input("Digite seu CPF: ").strip()
-    idade = input("Digite sua Idade: ").strip()
-    senha = input("Digite sua senha: ").strip()
+    n = 0
+    while n != 1:
+        try:
+            nome = input("Digite seu nome completo: ").strip()
+            cpf = int(input("Digite seu CPF: ").strip())
+            idade = int(input("Digite sua Idade: ").strip())
+            senha = input("Digite sua senha: ").strip()
+            n = 1
+        except ValueError:
+            print("Apenas dígitos numéricos\n")
 
 
     if any(usuario.nome == nome for usuario in usuarios):
