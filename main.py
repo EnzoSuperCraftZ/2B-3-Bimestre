@@ -9,10 +9,15 @@ def registrar_usuario():
     print("\nRegistrar informações\n")
     nome = input("Digite seu nome completo: ").strip()
     cpf = input("Digite seu CPF: ").strip()
-    idade = input("Digite sua Idade: ").strip()
     senha = input("Digite sua senha: ").strip()
+    while True:
+        try:
+            idade=int(input("Digite a sua idade:").strip())
+            break
+        except ValueError:
+            print("Erro: A idade tem que ser um numero inteiro, tente novamente.")
 
-
+    
     if any(usuario.nome == nome for usuario in usuarios):
         print("\nErro: Pessoa já cadastrada.")
         return
