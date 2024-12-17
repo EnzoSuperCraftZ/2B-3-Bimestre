@@ -15,7 +15,7 @@ def registrar_usuario():
             idade = int(input("Digite sua Idade: ").strip())
             senha = input("Digite sua senha: ").strip()
             n = 1
-        except ValueError:
+        except ValueError: #exceção
             print("Apenas dígitos numéricos\n")
 
 
