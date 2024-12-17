@@ -92,6 +92,11 @@ def menu():
       print("4 - Ver feedbacks")
       print("5 - Sair")
       opcao = input("\nEscolha uma opção: ").strip()
+      try:
+            opcao = int(opcao)
+        except ValueError:
+            print("Erro: Opção deve ser um número. Tente novamente.")
+            continue
 
       if opcao == '1':
           registrar_usuario()
