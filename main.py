@@ -2,7 +2,7 @@
 #2° B Vespertino
 from classes import *
 
-usuarios = []
+usuarios = [] #coleções
 reviews = []
 def registrar_usuario():
     tipo = input("Tipo de usuário:\n\n1 - Aluno\n2 - Visitante\n3 - Chefe De Departamento\nEscolha o seu tipo de usuário: ").strip().upper()
