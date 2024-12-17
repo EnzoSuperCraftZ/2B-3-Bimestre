@@ -29,7 +29,7 @@ class Pessoa(ABC):
     print ("nome:" + self.nome + "\nCPF: " +self.cpf + '\nIdade:' + str(self.idade) )
 
 
-class Aluno(Pessoa): #herança
+class Aluno(Pessoa):
   def __init__(self, nome, cpf, idade, matricula, curso, senha):
         #person.__init__(self, primeiro, sobrenome, idade)
     super().__init__(nome, cpf, idade, senha)
@@ -51,7 +51,7 @@ class Aluno(Pessoa): #herança
     print("\nNome:" + self.nome + "\nCPF: " + str(self.cpf) + '\nIdade:' + str(self.idade) + '\nMatricula: ' + str(self.matricula) + "\nCurso: "+ str(self.curso))
 
 
-class Visitante(Pessoa): #herança
+class Visitante(Pessoa):
   def __init__(self, nome, cpf, idade, motivo, senha):
     super().__init__(nome, cpf, idade, senha)
     self.motivo = motivo
@@ -66,7 +66,7 @@ class Visitante(Pessoa): #herança
   def exibirVisitante(self):
     print("\nNome:" + self.nome + "\nCPF: " + str(self.cpf) + '\nIdade:' + str(self.idade) + '\nMotivo da vinda: ' + str(self.motivo))
 
-class ChefeDepartamento(Pessoa): #herança
+class ChefeDepartamento(Pessoa):
   def __init__(self, nome, cpf, idade, departamento, senha):
     super().__init__(nome, cpf, idade, senha)
     self.departamento = departamento
@@ -81,11 +81,11 @@ class ChefeDepartamento(Pessoa): #herança
   def exibirChefeDepartamento(self):
     print("\nNome:" + self.nome + "\nCPF: " + str(self.cpf) + '\nIdade:' + str(self.idade) + '\nDepartamento: ' + self.departamento)
 
-class Feedback(ABC):
-  def __init__ (self, nota, feedback, usuario_logado):
+class Alvo(ABC):
+  def __init__ (self, nota, feedback):
+
     self.nota = nota
     self.feedback = feedback
-    self.usuario_logado = usuario_logado #associação
     def get_nota(self):
             return self.nota
     def set_nota(self, nota):
@@ -93,26 +93,16 @@ class Feedback(ABC):
     def get_feedback(self):
             return self.feedback
     def set_feedback(self, feedback):
-            self.feedback = feedback
-    def get_usuario_logado(self):
-            return self.usuario_logado
-    def set_usuario_logado(self, usuario_logado):
-            self.usuario_logado = usuario_logado
-    '''def get_pessoa(self):
-            return self.pessoa
-    def set_pessoa(self, pessoa):
-            self.pessoa = pessoa'''
+            self.feedback =  feedback
 
-  def  __str__(self):
-       '''return str(self.feedback) + "," + str(self.usuario_logado.nome)'''
-       return "\nNome: " + str(self.usuario_logado.nome) + "\nFeedback: " + str(self.feedback)
+  def  __str__(self):+ "," + self.feedback
 
-  def exibirFeedback(self):
-    print ("\nNome:" + self.nomePessoa + "\nTipo de review:" + self.tipo + "\nNota (de 1 a 10): " + str(self.nota) + '\nFeedback: ' + self.feedback)
+  def exibirAlvo(self):
+    print ("\nTipo de review:" + self.tipo + "\nNota (de 1 a 10): " + str(self.nota) + '\nFeedback: ' + self.feedback)
 
-class FeedbackLocal(Feedback): #herança
-  def __init__ (self, nota, feedback, local, usuario_logado):
-    super().__init__(nota, feedback, usuario_logado)
+class Local(Alvo):
+  def __init__ (self, nota, feedback, local):
+    super().__init__(nota, feedback)
     self.local = local
     def get_local(self):
             return self.local
@@ -120,15 +110,14 @@ class FeedbackLocal(Feedback): #herança
             self.local =  local
 
   def __str__(self):
-    '''return super().__str__() + "," + self.local'''
-    return "\nNome: " + str(self.usuario_logado.nome) + "\nLocal: " + self.local + "\nNota: " + self.nota + "\nFeedback: " + str(self.feedback)
+    return super().__str__() + "," + self.local
 
   def exibirLocal(self):
-      print ("\nNome:" + self.usuario_logado + "\nTipo de review: " + self.tipo + "\n\nAlvo da review: " + self.local + "\nNota (de 1 a 10): " + str(self.nota) + '\nFeedback: ' + self.feedback)
+      print ("\nTipo de review: " + self.tipo + "\n\nAlvo da review: " + self.local + "\nNota (de 1 a 10): " + str(self.nota) + '\nFeedback: ' + self.feedback)
 
-class FeedbackDepartamento(Feedback): #herança
-  def __init__ (self, nota, feedback, departamento, usuario_logado):
-    super().__init__(nota, feedback, usuario_logado)
+class Departamento(Alvo):
+  def __init__ (self, nota, feedback, departamento):
+    super().__init__(nota, feedback)
     self.departamento = departamento
     def get_departamento(self):
             return self.departamento
@@ -136,8 +125,7 @@ class FeedbackDepartamento(Feedback): #herança
             self.departamento =  departamento
 
   def __str__(self):
-    '''return super().__str__() + "," + self.departamento'''
-    return  "\nNome: " + str(self.usuario_logado.nome) + "\nDepartamento: " + self.departamento + "\nNota: " + self.nota + "\nFeedback: " + str(self.feedback)
+    return super().__str__() + "," + self.departamento
 
   def exibirDepartamento(self):
-    print ("\nNome:" + self.usuario_logado + "\nTipo de review: " + self.tipo + "\n\nAlvo da review: " + self.departamento + "\nNota (de 1 a 10): " + str(self.nota) + '\nFeedback: ' + self.feedback)
+    print ("\nTipo de review: " + self.tipo + "\n\nAlvo da review: " + self.departamento + "\nNota (de 1 a 10): " + str(self.nota) + '\nFeedback: ' + self.feedback)

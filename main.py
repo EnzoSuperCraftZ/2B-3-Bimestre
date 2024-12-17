@@ -37,10 +37,21 @@ def registrar_usuario():
     print("\nUsuário registrado com sucesso.")
 
 def feedback2():
-        print("\nRegistrar informações\n")
-        nota = input("Digite a nota: ").strip()
-        feedback = input("Redija sua crítica: ").strip()
-        return nota, feedback        
+    while True:
+        try:
+        
+            nota = input("Dê uma nota de 0 a 10: ").strip()
+            nota = int(nota) 
+            if 0 <= nota <= 10:
+                break
+            else:
+                print(" \nA nota deve ser um número de 0 a 10. Tente novamente:")
+        except ValueError:
+            print(" \nEntrada inválida! Digite apenas números inteiros:")
+    feedback = input("Redija sua crítica: ").strip()
+    return nota, feedback
+
+  
 def fazer_feedback(usuario_logado):
     nota = None
     feedback = None
@@ -49,12 +60,12 @@ def fazer_feedback(usuario_logado):
     if tipo == '1':
         local = input("Digite o local: ").strip()
         nota, feedback = feedback2()
-        review = FeedbackLocal(nota, feedback, local, usuario_logado)
+        review = (nota, feedback, local, usuario_logado)
         reviews.append(review)
     elif tipo == '2':
         departamento = input("Digite o departamento: ").strip()
         nota, feedback = feedback2()
-        review = FeedbackDepartamento(nota, feedback, departamento, usuario_logado)
+        review = (nota, feedback, departamento, usuario_logado)
         reviews.append(review)
     else:
         print("Tipo de review inválido.")
