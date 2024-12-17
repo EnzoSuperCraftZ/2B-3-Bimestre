@@ -1,1 +1,1 @@
-No código original, na hora de dar a nota no feedback não havia um limite de um número inteiro, e se colocasse uma letra não estava dando ValueError e seguia o código como se nada tivesse acontecido.
+No código original, no momento de fazer a avaliação com uma nota no feedback, não havia um limite para o número da nota, ou uma forma de impedir do usuário de colocar algo que não fosse um número inteiro, não dando um erro de ValueError, nesta branch este erro é "forçado" e agora existe um limite de 0 a 10 para dar a nota. 
